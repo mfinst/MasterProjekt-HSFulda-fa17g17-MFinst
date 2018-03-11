@@ -1,0 +1,26 @@
+<!--<ion-header>-->
+<!--<ion-navbar>-->
+<!--<ion-title>offers</ion-title>-->
+<!--</ion-navbar>-->
+<!--</ion-header>-->
+<ion-content padding>
+  <div *ngFor="let offer of offers">
+    <ion-card>
+      <img [src]="offer.media"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{offer.angebot_titel}}
+        </ion-card-title>
+        <p>
+          {{offer.beschreibung}}
+          Price: {{offer.kaufpreis}}
+          Specs: qm {{offer.qm}} city: {{offer.plz}} in {{offer.ortname}}
+        </p>
+        <ion-buttons>
+          <button ion-button (click)="editOffer(offer.immobilien_id)">Edit</button>
+          <button ion-button (click)="deactivateOffer(offer.id)">Delete</button>
+        </ion-buttons>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

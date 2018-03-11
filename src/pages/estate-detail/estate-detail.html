@@ -1,0 +1,53 @@
+<!--
+  Generated template for the EstateDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>estate-detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="offer !== null">
+    <ion-card>
+      <ion-card-header>
+        {{offer.data.offer_title}}
+      </ion-card-header>
+      <ion-card-content>
+        {{offer.data.immo_desc}}
+        <ion-list>
+          <ion-item-divider>Specifications</ion-item-divider>
+          <p>{{offer.data.immo_type}} to {{offer.data.offer_type}}</p>
+          <p>{{offer.data.agent_lastname}} by {{offer.data.agent_nick}}</p>
+          <p>Address: {{offer.data.immo_address}}</p>
+          <p>{{offer.data.city_name}} {{offer.data.city_plz}}</p>
+          <p>Size: {{offer.data.immo_qm}}qm</p>
+          <p>Rooms: {{offer.data.immo_rooms}} Floors: {{offer.data.immo_floors}}</p>
+          <p>Usage: {{offer.data.immo_purpose}}</p>
+          <p>Heating: {{offer.data.immo_heating}}</p>
+          <p>
+            <ion-badge color="secondary" *ngFor="let feature of featureslist">
+              {{feature}}
+            </ion-badge>
+          </p>
+        </ion-list>
+        <h2>Pricing</h2>
+        <ion-list>
+          <ion-item>Price: {{offer.data.offer_pricing}}</ion-item>
+          <ion-item>Bail: {{offer.data.offer_bail}}</ion-item>
+          <ion-item>Provision: {{offer.data.offer_provision}}</ion-item>
+          <ion-item>UtilCosts: {{offer.data.offer_utilcosts}}</ion-item>
+          <ion-item>Start: {{offer.data.offer_startdate}}</ion-item>
+          <ion-item>End: {{offer.data.offer_enddate}}</ion-item>
+        </ion-list>
+      </ion-card-content>
+      <img [src]="offer.data.immo_media"/>
+    </ion-card>
+  </div>
+</ion-content>

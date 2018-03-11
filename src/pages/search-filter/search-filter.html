@@ -1,0 +1,166 @@
+<!--
+  Generated template for the SearchFilterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>Filter Estates</ion-title>
+  </ion-navbar>
+  <div padding>
+    <ion-segment [(ngModel)]="alreadySearched">
+      <ion-segment-button [value]="true">
+        Search
+      </ion-segment-button>
+      <ion-segment-button [value]="false">
+        Extended
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div [ngSwitch]="alreadySearched">
+    <ion-list *ngSwitchCase="true">
+      <form [formGroup]="searchFormular" (ngSubmit)="onSubmit()">
+        <!-- Buy/Rent(Select), Country(select), Estatetype(Select), qm(string), max Price string, rooms number select-->
+        <ion-item>
+          <ion-label>Request</ion-label>
+          <ion-select id="requestType" formControlName="requestType">
+            <ion-option value="Buy">Buy</ion-option>
+            <ion-option value="Rent">Rent</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>City</ion-label>
+          <ion-select id="city" formControlName="city">
+            <ion-option value="Fulda">Fulda</ion-option>
+            <ion-option value="Hünfeld">Hünfeld</ion-option>
+            <ion-option value="Eichenzell">Eichenzell</ion-option>
+            <ion-option value="Neuhof">Neuhof</ion-option>
+            <ion-option value="Petersberg">Petersberg</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Type</ion-label>
+          <ion-select id="type" formControlName="type">
+            <ion-option value="Estate">Estate</ion-option>
+            <ion-option value="House">House</ion-option>
+            <ion-option value="Appartment">Appartment</ion-option>
+            <ion-option value="Villa/Townhouse">Villa</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>QM</ion-label>
+          <ion-input
+            type="string"
+            id="qm"
+            formControlName="qm"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Price</ion-label>
+          <ion-input
+            type="string"
+            id="price"
+            required
+            formControlName="price"
+            placeholder="$"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Rooms</ion-label>
+          <ion-select id="rooms" formControlName="rooms">
+            <ion-option value="0">-</ion-option>
+            <ion-option value="1">at least 1</ion-option>
+            <ion-option value="2">at least 2</ion-option>
+            <ion-option value="3">at least 3</ion-option>
+            <ion-option value="4">at least 4</ion-option>
+          </ion-select>
+        </ion-item>
+      </form>
+      <button ion-button (click)="dismiss(true)">Search</button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="false">
+      <form [formGroup]="filterFormular" (ngSubmit)="onSubmit()">
+        <!--min qm; max qm; min price; max price; year of Construction; Type of Heating; agency => 5Inputs 2Selects-->
+
+        <ion-item>
+          <ion-label>Min Price</ion-label>
+          <ion-input
+            type="string"
+            id="minprice"
+            formControlName="minprice"
+            placeholder="$"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Max Price</ion-label>
+          <ion-input
+            type="string"
+            id="maxprice"
+            formControlName="maxprice"
+            placeholder="$"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Min QM</ion-label>
+          <ion-input
+            type="string"
+            id="minqm"
+            formControlName="minqm"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Max QM</ion-label>
+          <ion-input
+            type="string"
+            id="maxqm"
+            formControlName="maxqm"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Construction Year</ion-label>
+          <ion-input
+            type="string"
+            id="year"
+            formControlName="year"
+            placeholder="i.e. 1963"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Heating</ion-label>
+          <ion-select id="heating" formControlName="heating">
+            <ion-option value="Centralized (Oil)">Central Oil</ion-option>
+            <ion-option value="Centralized (Gas)">Central Gas</ion-option>
+            <ion-option value="Wood Stove (Floor)">Wood Stove</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Agency Preference</ion-label>
+          <ion-select id="agency" formControlName="agency">
+            <ion-option value="SFStateHomes">SFStateHomes</ion-option>
+            <ion-option value="SJStateRealtors">SJStateRealtors</ion-option>
+            <ion-option value="CSURealEstate">CSURealEstate</ion-option>
+          </ion-select>
+        </ion-item>
+      </form>
+      <button ion-button (click)="dismiss(false)">Filter</button>
+    </ion-list>
+  </div>
+</ion-content>

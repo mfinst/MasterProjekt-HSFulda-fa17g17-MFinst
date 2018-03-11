@@ -1,0 +1,42 @@
+<!--
+  Generated template for the AgencyFormularPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agency Formular</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="submit($event)" #agencyForm="ngForm">
+    <ion-item>
+      <ion-label stacked>Agency Name</ion-label>
+      <ion-input
+        type="string"
+        [ngModel]="useragency.agency"
+        ngModel
+        name="agency"
+        required
+        #agency="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Agent Id</ion-label>
+      <ion-input
+        type="string"
+        [ngModel]="useragency.agentID"
+        ngModel
+        name="agentID"
+        required
+        #agentID="ngModel"
+      ></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!agencyForm.valid">Submit Changes</button>
+  </form>
+</ion-content>

@@ -1,0 +1,94 @@
+<!--
+  Generated template for the ContactFormularPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Contact Formular</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="submit($event)" #contactinfoForm="ngForm">
+    <ion-item>
+      <ion-label stacked>First Name</ion-label>
+      <ion-input
+        type="string"
+        [ngModel]="userContact.firstname"
+        ngModel
+        name="firstname"
+        required
+        #firstname="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Last Name</ion-label>
+      <ion-input
+        type="string"
+        [ngModel]="userContact.lastname"
+        ngModel
+        name="lastname"
+        required
+        #lastname="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Phone</ion-label>
+      <ion-input
+        type="string"
+        [ngModel]="userContact.phone"
+        ngModel
+        name="phone"
+        #phone="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Street</ion-label>
+      <ion-input
+        type="string"
+        [ngModel]="userContact.street"
+        ngModel
+        name="street"
+        required
+        #street="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>City</ion-label>
+      <ion-input
+        type="string"
+        [ngModel]="userContact.city"
+        ngModel
+        name="city"
+        #city="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Postalcode</ion-label>
+      <ion-input
+        type="string"
+        [ngModel]="userContact.postalcode"
+        ngModel
+        name="postalcode"
+        required
+        #postalcode="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Country</ion-label>
+      <ion-input
+        type="string"
+        ngModel
+        name="coundty"
+        required
+        #country="ngModel"
+      ></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!contactinfoForm.valid">Submit Changes</button>
+  </form>
+</ion-content>
