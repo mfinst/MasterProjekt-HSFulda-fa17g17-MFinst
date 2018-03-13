@@ -137,6 +137,8 @@ export class OfferEditPage {
   ionViewDidLoad() {
     this.resthandler.getEstateById(this.navParams.get('id')).subscribe((offer: any) => {
       this.offer = offer;
+      console.log(offer.data.offer_pricing);
+      console.log(parseFloat(offer.data.offer_pricing));
       this.offerForm.patchValue({
         'immo_address': offer.data.immo_address,
         'immo_baujahr': offer.data.immo_baujahr,
@@ -152,13 +154,13 @@ export class OfferEditPage {
         'immo_qm': offer.data.immo_qm,
         'immo_rooms': offer.data.immo_rooms,
         'immo_type': offer.data.immo_type,
-        'offer_pricing': offer.data.offer_pricing,
+        'offer_pricing': parseFloat(offer.data.offer_pricing.replace(',','')),
         'offer_provision': offer.data.offer_provision,
-        'offer_utilcosts': offer.data.offer_utilcosts,
+        'offer_utilcosts': parseFloat(offer.data.offer_utilcosts),
         'city_name': offer.data.city_name,
         'city_plz': offer.data.city_plz,
         'offer_type': offer.data.offer_type,
-        'offer_bail': offer.data.offer_bail,
+        'offer_bail': parseFloat(offer.data.offer_bail),
         'offer_startdate': offer.data.offer_startdate,
         'offer_enddate': offer.data.offer_enddate
       });
@@ -190,8 +192,9 @@ export class OfferEditPage {
       "startdate": this.offerForm.controls.offer_startdate.value,
       "enddate":  this.offerForm.controls.offer_enddate.value
     };
-    console.log(updatedEstate);
+    console.log(updatedEstate)
     this.resthandler.updateEstate(updatedEstate).subscribe(success => {
+      console.log(success)
       console.log('success!!!')
       // this.navCtrl.push('OffersPage');
     });

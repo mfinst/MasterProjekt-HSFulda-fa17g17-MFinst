@@ -17,7 +17,9 @@ export class ResthandlerProvider {
 
   }
 
-  pushEstate(estate) {}
+  pushEstate(estate) {
+    return this.http.post('http://' + this.authServive.backendURL + '/fa17g17/estatehandling/create', estate);
+  }
   updateEstate(updatedEstate: any) {
     return this.http.post('http://' + this.authServive.backendURL + '/fa17g17/estatehandling/update', updatedEstate);
   }

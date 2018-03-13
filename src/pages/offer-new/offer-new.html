@@ -1,18 +1,208 @@
-<!--
-  Generated template for the OfferNewPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>offer-new</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
+  <ion-list>
+    <form [formGroup]="offerForm" (ngSubmit)="saveChanges($event)">
+      <ion-item>
+        <ion-label stacked>Address</ion-label>
+        <ion-input
+          type="string"
+          id="immo_address"
+          formControlName="immo_address"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Year of Construction</ion-label>
+        <ion-input
+          type="number"
+          id="immo_baujahr"
+          formControlName="immo_baujahr"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Condition</ion-label>
+        <ion-input
+          type="string"
+          id="immo_condition"
+          formControlName="immo_condition"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Title</ion-label>
+        <ion-input
+          type="string"
+          id="offer_title"
+          formControlName="offer_title"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Description</ion-label>
+        <ion-input
+          type="string"
+          id="immo_desc"
+          formControlName="immo_desc"
+        ></ion-input>
+      </ion-item>
+      <!--TODO: Generate stuff -->
+      <ion-item>
+        <ion-label stacked>Features</ion-label>
+        <ion-input
+          type="string"
+          id="immo_features"
+          formControlName="immo_features"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Floors</ion-label>
+        <ion-input
+          type="number"
+          id="immo_floors"
+          formControlName="immo_floors"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Heating</ion-label>
+        <ion-select
+          type="string"
+          id="immo_heating"
+          formControlName="immo_heating"
+        >
+          <ion-option value="Centralized (Oil)">Centralized (Oil)</ion-option>
+          <ion-option value="Centralized (Gas)">Centralized (Gas)</ion-option>
+          <ion-option value="Wood Stove (Floor)">Wood Stove (Floor)</ion-option>
+        </ion-select>
+      </ion-item>
+      <!--TODO: File Picker -->
+      <ion-item>
+        <ion-label stacked>Media</ion-label>
+        <ion-input
+          type="string"
+          id="immo_media"
+          formControlName="immo_media"
+        ></ion-input>
+      </ion-item>
+      <!--TODO: Select -->
+      <ion-item>
+        <ion-label stacked>Purpose</ion-label>
+        <ion-input
+          type="string"
+          id="immo_purpose"
+          formControlName="immo_purpose"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>QM</ion-label>
+        <ion-input
+          type="number"
+          id="immo_qm"
+          formControlName="immo_qm"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Rooms</ion-label>
+        <ion-input
+          type="number"
+          id="immo_rooms"
+          formControlName="immo_rooms"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Estate Type</ion-label>
+        <ion-select
+          type="string"
+          id="immo_type"
+          formControlName="immo_type"
+        >
+          <ion-option value="Estate">Estate</ion-option>
+          <ion-option value="House">House</ion-option>
+          <ion-option value="Appartment">Appartment</ion-option>
+          <ion-option value="Villa/Townhouse">Villa</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>City</ion-label>
+        <ion-select
+          type="string"
+          id="city_name"
+          formControlName="city_name"
+        >
+          <ion-option value="Fulda">Fulda</ion-option>
+          <ion-option value="Hünfeld">Hünfeld</ion-option>
+          <ion-option value="Eichenzell">Eichenzell</ion-option>
+          <ion-option value="Neuhof">Neuhof</ion-option>
+          <ion-option value="Petersberg">Petersberg</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Postalcode</ion-label>
+        <ion-input
+          type="string"
+          id="city_plz"
+          formControlName="city_plz"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Offer Type</ion-label>
+        <ion-select
+          type="string"
+          id="offer_type"
+          formControlName="offer_type"
+        >
+          <ion-option value="Buy">Buy</ion-option>
+          <ion-option value="Rent">Rent</ion-option>
+        </ion-select>
+      </ion-item>
 
+      <ion-item-divider>Pricing</ion-item-divider>
+      <ion-item>
+        <ion-label stacked>Price</ion-label>
+        <ion-input
+          type="number"
+          id="offer_pricing"
+          formControlName="offer_pricing"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Provision</ion-label>
+        <ion-input
+          type="number"
+          id="offer_provision"
+          formControlName="offer_provision"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Util Costs</ion-label>
+        <ion-input
+          type="number"
+          id="offer_utilcosts"
+          formControlName="offer_utilcosts"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Bail</ion-label>
+        <ion-input
+          type="number"
+          id="offer_bail"
+          formControlName="offer_bail"
+        ></ion-input>
+      </ion-item>
+      <ion-item-divider>Time Periode</ion-item-divider>
+      <ion-item>
+        <ion-label stacked>Start</ion-label>
+        <ion-input
+          type="string"
+          id="offer_startdate"
+          formControlName="offer_startdate"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>End</ion-label>
+        <ion-input
+          type="string"
+          id="offer_enddate"
+          formControlName="offer_enddate"
+        ></ion-input>
+      </ion-item>
+      <button ion-button type="submit" [disabled]="!offerForm.valid">Submit Changes</button>
+    </form>
+
+  </ion-list>
 </ion-content>

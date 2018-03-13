@@ -17,6 +17,7 @@ import { ContactFormularPage } from '../pages/contact-formular/contact-formular'
 import { OffersPage } from '../pages/offers/offers';
 import { FavoritsPage } from '../pages/favorits/favorits';
 import { SearchFilterPage } from '../pages/search-filter/search-filter';
+import { OffersPageModule } from '../pages/offers/offers.module';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,13 @@ import { SearchFilterPage } from '../pages/search-filter/search-filter';
     AccountFormularPage,
     AgencyFormularPage,
     ContactFormularPage,
-    OffersPage,
     FavoritsPage,
     SearchFilterPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    OffersPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

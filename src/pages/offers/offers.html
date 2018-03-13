@@ -4,6 +4,7 @@
 <!--</ion-navbar>-->
 <!--</ion-header>-->
 <ion-content padding>
+  <button ion-button (click)="newOffer()">New</button>
   <div *ngFor="let offer of offers">
     <ion-card>
       <img [src]="offer.media"/>

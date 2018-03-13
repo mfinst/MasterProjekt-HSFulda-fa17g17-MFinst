@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ResthandlerProvider } from '../../providers/resthandler/resthandler';
 import { OfferEditPage } from '../offer-edit/offer-edit';
@@ -15,7 +15,7 @@ import { OfferEditPage } from '../offer-edit/offer-edit';
   selector: 'page-offers',
   templateUrl: 'offers.html',
 })
-export class OffersPage {
+export class OffersPage implements OnDestroy{
   offers = [{}];
   constructor(public navCtrl: NavController, public navParams: NavParams, public resthandler: ResthandlerProvider) {
   }
@@ -33,8 +33,14 @@ export class OffersPage {
     // new route to the offer
     this.navCtrl.push('OfferEditPage', {id: offerId})
   }
+  newOffer() {
+    this.navCtrl.push('OfferNewPage');
+  }
   deactivateOffer(offerId) {
     // RestCall to deactivate
+  }
+  ngOnDestroy() {
+    // this.navCtrl.push('OffersPage')
   }
 
 }
