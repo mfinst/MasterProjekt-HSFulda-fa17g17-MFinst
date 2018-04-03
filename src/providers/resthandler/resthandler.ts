@@ -13,6 +13,7 @@ import { EstateFilterModel } from './estate-filter.model';
 */
 @Injectable()
 export class ResthandlerProvider {
+  search = {angebot_art: '', ort: '', objektart: '', qm: '', preis: '', zimmeranzahl: 1}
   constructor(public http: HttpClient, public authServive: AuthServiceProvider) {
 
   }
@@ -44,10 +45,18 @@ export class ResthandlerProvider {
     });
   }
   searchEstates(filter: EstateFilterModel) {
+    this.search.objektart = filter.objektart;
+    this.search.angebot_art = filter.angebot_art;
+    this.search.ort = filter.ort;
+    this.search.preis = filter.preis;
+    this.search.qm = filter.qm;
+    this.search.zimmeranzahl = filter.zimmeranzahl
     return this.http.post( 'http://' + this.authServive.backendURL + '/fa17g17/estatesearch/search', filter.toJsonRequiredFilter());
   }
   filterEstates(filter: EstateFilterModel) {
-    return this.http.post( 'http://' + this.authServive.backendURL + '/fa17g17/estatesearch/filter', filter.toJsonAdditionalFilter());
+    filter.search = this.search;
+    console.log(filter.toJsonAdditionalFilter())
+    return this.http.post( 'http://' + this.authServive.backendURL + '/fa17g17/estatesearch/filter', filter.toJsonAdditionalFilter(),{});
   }
   getEstateByUser() {
     return this.http.post( 'http://' + this.authServive.backendURL + '/fa17g17/estatehandling/render/offers', {"userID": this.authServive.getUserInfo().id});

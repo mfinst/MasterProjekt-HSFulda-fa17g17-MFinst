@@ -9,7 +9,6 @@
   <ion-navbar color="dark">
     <ion-title>{{this.authService.getUserInfo().email}}</ion-title>
   </ion-navbar>
-  <!-- ToDo: Löschmodus Toggle einbauen -->
   <ion-segment [(ngModel)]="subject">
     <ion-segment-button value="KaufenMieten">
       Buy or Rent Request
@@ -38,6 +37,7 @@
         <ion-item>
           <h2>{{message.Titel}}</h2>
           <p>From: {{message.absender_email}}</p>
+          <p>To: {{message.empfanger_email}}</p>
         </ion-item>
         <ion-card-content>
           {{message.nachricht}}
@@ -64,6 +64,7 @@
         <ion-item>
           <h2>{{message.Titel}}</h2>
           <p>From: {{message.absender_email}}</p>
+          <p>To: {{message.empfanger_email}}</p>
         </ion-item>
         <ion-card-content>
           {{message.nachricht}}
@@ -90,6 +91,7 @@
         <ion-item>
           <h2>{{message.Titel}}</h2>
           <p>From: {{message.absender_email}}</p>
+          <p>To: {{message.empfanger_email}}</p>
         </ion-item>
         <ion-card-content>
           {{message.nachricht}}
@@ -116,6 +118,7 @@
         <ion-item>
           <h2>{{message.Titel}}</h2>
           <p>From: {{message.absender_email}}</p>
+          <p>To: {{message.empfanger_email}}</p>
         </ion-item>
         <ion-card-content>
           {{message.nachricht}}

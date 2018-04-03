@@ -29,7 +29,7 @@ export class AuthServiceProvider {
   public backendURL = 'localhost:17017';
   // server
   // public Domain : mpfa17.de
-  // public backendURL = '79.143.180.221';
+  // public backendURL = '79.143.180.221:80';
   public userInfo: any;
   // admin@admin.de => cloud
   constructor(

@@ -15,6 +15,7 @@ export class EstateFilterModel {
   bauJahr: string;
   heizungs_art: string;
   agencyID: string;
+  search: any;
   toJsonRequiredFilter() {
     return {
       "angebot_art": this.angebot_art,
@@ -34,7 +35,10 @@ export class EstateFilterModel {
       "maxPreis": this.maxPreis,
       "bauJahr": this.bauJahr,
       "heizungs_art": this.heizungs_art,
-      "agencyID": this.agencyID
+      "agencyID": this.agencyID,
+      "session": {
+        "search" : this.search
+      }
     };
   }
 }

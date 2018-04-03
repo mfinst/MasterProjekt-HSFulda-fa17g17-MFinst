@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ResthandlerProvider } from '../../providers/resthandler/resthandler';
 import { NgForm } from '@angular/forms';
@@ -21,7 +21,7 @@ export class AccountFormularPage {
   @ViewChild('notespan') notespan: ElementRef;
   userMail = '';
   errortext = ''
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public restHandlerService: ResthandlerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public restHandlerService: ResthandlerProvider, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -42,7 +42,11 @@ export class AccountFormularPage {
         '' + this.accountinfoForm.value.password
       ).subscribe(
         (response) => {
-          // do something
+          let toast = this.toastCtrl.create({
+            message: 'Accountdata successfully updated',
+            duration: 2000
+          });
+          toast.present();
         }
       );
     } else if(this.accountinfoForm.value.password === '') {

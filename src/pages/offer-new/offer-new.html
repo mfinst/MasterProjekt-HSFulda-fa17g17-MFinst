@@ -1,6 +1,6 @@
 <ion-content padding>
   <ion-list>
-    <form [formGroup]="offerForm" (ngSubmit)="saveChanges($event)">
+    <form [formGroup]="offerForm" (ngSubmit)="commitEstate($event)">
       <ion-item>
         <ion-label stacked>Address</ion-label>
         <ion-input
@@ -77,6 +77,7 @@
           type="string"
           id="immo_media"
           formControlName="immo_media"
+          (click)="fileChooser()"
         ></ion-input>
       </ion-item>
       <!--TODO: Select -->
@@ -158,6 +159,7 @@
           type="number"
           id="offer_pricing"
           formControlName="offer_pricing"
+          step="0.01"
         ></ion-input>
       </ion-item>
       <ion-item>
@@ -166,6 +168,7 @@
           type="number"
           id="offer_provision"
           formControlName="offer_provision"
+          step="0.01"
         ></ion-input>
       </ion-item>
       <ion-item>
@@ -174,6 +177,7 @@
           type="number"
           id="offer_utilcosts"
           formControlName="offer_utilcosts"
+          step="0.01"
         ></ion-input>
       </ion-item>
       <ion-item>
@@ -182,6 +186,7 @@
           type="number"
           id="offer_bail"
           formControlName="offer_bail"
+          step="0.01"
         ></ion-input>
       </ion-item>
       <ion-item-divider>Time Periode</ion-item-divider>
@@ -191,6 +196,7 @@
           type="string"
           id="offer_startdate"
           formControlName="offer_startdate"
+          placeholder="YYYY-MM-DD"
         ></ion-input>
       </ion-item>
       <ion-item>
@@ -199,9 +205,10 @@
           type="string"
           id="offer_enddate"
           formControlName="offer_enddate"
+          placeholder="YYYY-MM-DD"
         ></ion-input>
       </ion-item>
-      <button ion-button type="submit" [disabled]="!offerForm.valid">Submit Changes</button>
+      <button ion-button type="submit" [disabled]="!offerForm.valid">Finish Offer</button>
     </form>
 
   </ion-list>

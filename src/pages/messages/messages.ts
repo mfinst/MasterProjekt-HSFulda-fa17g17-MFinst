@@ -84,6 +84,30 @@ export class MessagesPage {
           default:
         }
       }
+      this.buySellMsgs.sort((a, b)=>{
+        if(a.id >= b.id) {
+          return -1;
+        }
+        return +1;
+      });
+      this.inspecMsgs.sort((a, b)=>{
+        if(a.id >= b.id) {
+          return -1;
+        }
+        return +1;
+      });
+      this.infoMsgs.sort((a, b)=>{
+        if(a.id >= b.id) {
+          return -1;
+        }
+        return +1;
+      })
+      this.otherMsgs.sort((a, b)=>{
+        if(a.id >= b.id) {
+          return -1;
+        }
+        return +1;
+      })
     })
   }
 
@@ -175,9 +199,5 @@ export class MessagesListComponent {
     console.log('loaded')
     console.log(this.messages)
     console.log(this.message);
-  }
-
-  writeNewmessage() {
-
   }
 }

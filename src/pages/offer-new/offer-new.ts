@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ResthandlerProvider } from '../../providers/resthandler/resthandler';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+
 
 /**
  * Generated class for the OfferNewPage page.
@@ -60,9 +62,7 @@ export class OfferNewPage {
       ]),
     'immo_media': new FormControl(
       null,
-      [
-        Validators.required
-      ]),
+      []),
     'immo_purpose': new FormControl(
       null,
       [
@@ -130,14 +130,20 @@ export class OfferNewPage {
         Validators.required
       ])
   })
-  constructor(public navCtrl: NavController, public navParams: NavParams, private resthandler: ResthandlerProvider) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private resthandler: ResthandlerProvider, private authService: AuthServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OfferNewPage');
   }
-  saveNewOffer() {
+
+  commitEstate() {
+    console.log('trying finish')
     const estate = {
+      "agentID": this.authService.getUserInfo().id,
+      "ownerID": this.authService.getUserInfo().id,
+      "request": 3,
       "title": this.offerForm.controls.offer_title.value,
       "desc": this.offerForm.controls.immo_desc.value,
       "estateType": this.offerForm.controls.immo_type.value,
@@ -158,11 +164,24 @@ export class OfferNewPage {
       "provision": this.offerForm.controls.offer_provision.value,
       "utilities": this.offerForm.controls.offer_utilcosts.value,
       "startdate": this.offerForm.controls.offer_startdate.value,
-      "enddate":  this.offerForm.controls.offer_enddate.value
+      "enddate": this.offerForm.controls.offer_enddate.value,
+      "Attachments": [],
+      "HasFiles": false,
+      "isLocal": false
     };
-    this.resthandler.pushEstate(estate).subscribe( success => {
-      console.log(success);
-    });
+    this.resthandler.pushEstate(estate).subscribe(success => {
+        console.log(success);
+      },
+      (error) => {
+        console.log(error)
+      },
+      () => {
+      console.log('new offer comitted?')
+      });
+  }
+
+  manageFiles() {
+
   }
 
 }

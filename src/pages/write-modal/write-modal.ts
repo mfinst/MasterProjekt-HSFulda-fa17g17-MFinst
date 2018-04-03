@@ -10,11 +10,12 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
   templateUrl: 'write-modal.html',
 })
 export class WriteModalPage {
+  metadata: {title:string, message:string, subjectSelector:string, topic:string, receiverNick: string}
   title = '';
   message : MessageModel;
   subjectSelector = 'KaufenMieten';
   topic = '';
-  receiverNick = '';
+  receiverNick: string;
   @ViewChild('msgFormular') form: NgForm;
   constructor(
     public platform: Platform,
@@ -33,7 +34,15 @@ export class WriteModalPage {
       this.topic = previous.Titel;
       this.receiverNick = previous.absender_email;
       console.log(this.subjectSelector + ' ' + this.topic + ' ' + this.receiverNick)
-      this.title = 'Response to' + previous.receiverNick;
+      this.title = 'Response to ' + previous.absender_email;
+      this.metadata = {
+        title: '',
+        message: '',
+        subjectSelector: 'KaufenMieten',
+        topic: previous.Titel,
+        receiverNick: previous.absender_email
+      }
+      console.log(this.metadata)
     }
     this.message = new MessageModel()
   }
@@ -58,9 +67,11 @@ export class WriteModalPage {
   }
 
   dismiss() {
+    console.log('dismissed')
     this.viewCtrl.dismiss(this.message);
   }
   cancleModal() {
-    this.viewCtrl.dismiss(undefined);
+    // console.log('canceled')
+    // this.viewCtrl.dismiss(undefined);
   }
 }

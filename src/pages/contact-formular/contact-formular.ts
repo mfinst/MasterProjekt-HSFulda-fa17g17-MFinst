@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ResthandlerProvider } from '../../providers/resthandler/resthandler';
 
@@ -25,7 +25,7 @@ export class ContactFormularPage {
     city: '',
     postalcode: ''
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public restHandlerService: ResthandlerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public restHandlerService: ResthandlerProvider, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -53,7 +53,11 @@ export class ContactFormularPage {
         '' + this.contactinfoForm.value.postalcode
       ).subscribe(
         (response) => {
-          // do something
+          let toast = this.toastCtrl.create({
+            message: 'Contact informations successfully updated',
+            duration: 2000
+          });
+          toast.present();
         }
       );
     }

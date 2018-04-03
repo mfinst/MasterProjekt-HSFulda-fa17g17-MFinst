@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ResthandlerProvider } from '../../providers/resthandler/resthandler';
 
@@ -21,7 +21,7 @@ export class AgencyFormularPage {
     agency: '',
     agentID: ''
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public restHandlerService: ResthandlerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public restHandlerService: ResthandlerProvider, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -44,7 +44,11 @@ export class AgencyFormularPage {
       '' + this.agencyForm.value.agencyID
     ).subscribe(
       (response) => {
-        // do something
+        let toast = this.toastCtrl.create({
+          message: 'Agencydata successfully updated',
+          duration: 2000
+        });
+        toast.present();
       }
     );
   }

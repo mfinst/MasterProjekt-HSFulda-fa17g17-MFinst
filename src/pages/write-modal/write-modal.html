@@ -20,10 +20,11 @@
         type="text"
         placeholder="Receiver Email"
         ngModel
+        [value]="metadata?.receiverNick"
         name="receiver"
         required
         email
-        #receiver="ngModel">{{this.receiverNick}}</ion-input>
+        #receiver="ngModel"></ion-input>
     </ion-item>
     <ion-list>
       <ion-item>
@@ -42,16 +43,16 @@
         type="text"
         placeholder="Buy Request"
         ngModel
-        [value]="this.topic"
+        [value]="metadata?.topic"
         name="topic"
         required
         #topic="ngModel"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Attachments</ion-label>
-      <!-- ToDo: File-picker -->
-      <ion-input placeholder="optional Files"></ion-input>
-    </ion-item>
+    <!--<ion-item>-->
+      <!--<ion-label color="primary" stacked>Attachments</ion-label>-->
+      <!--&lt;!&ndash; ToDo: File-picker &ndash;&gt;-->
+      <!--<ion-input placeholder="optional Files"></ion-input>-->
+    <!--</ion-item>-->
     <ion-item>
       <ion-label color="primary" stacked>Message</ion-label>
       <ion-textarea

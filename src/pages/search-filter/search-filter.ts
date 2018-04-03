@@ -98,13 +98,13 @@ export class SearchFilterPage {
     this.filter.preis = this.searchFormular.value.price;
     this.filter.zimmeranzahl = this.searchFormular.value.rooms;
     // Filter Params
-    this.filter.maxQm = this.filterFormular.value.maxqm;
-    this.filter.minQm = this.filterFormular.value.minqm;
-    this.filter.maxPreis = this.filterFormular.value.maxprice;
-    this.filter.minPreis = this.filterFormular.value.minprice;
-    this.filter.bauJahr = this.filterFormular.value.year;
-    this.filter.heizungs_art = this.filterFormular.value.heating;
-    this.filter.agencyID = this.filterFormular.value.agency;
+    this.filter.maxQm = this.filterFormular.value.maxqm === null ? 1000000 : this.filterFormular.value.maxqm;
+    this.filter.minQm = this.filterFormular.value.minqm === null ? 0 : this.filterFormular.value.minqm;
+    this.filter.maxPreis = this.filterFormular.value.maxprice === null ? 5000000 : this.filterFormular.value.maxprice;
+    this.filter.minPreis = this.filterFormular.value.minprice === null ? 0 : this.filterFormular.value.minprice;
+    this.filter.bauJahr = this.filterFormular.value.year === null ? 1900 : this.filterFormular.value.year;
+    this.filter.heizungs_art = this.filterFormular.value.heating === null ? '' : this.filterFormular.value.heating;
+    this.filter.agencyID = this.filterFormular.value.agency === null ? '' : this.filterFormular.value.agency;
     // Filter Test
     console.log('Filter Test')
     console.log(this.filter);

@@ -155,12 +155,12 @@ export class OfferEditPage {
         'immo_rooms': offer.data.immo_rooms,
         'immo_type': offer.data.immo_type,
         'offer_pricing': parseFloat(offer.data.offer_pricing.replace(',','')),
-        'offer_provision': offer.data.offer_provision,
-        'offer_utilcosts': parseFloat(offer.data.offer_utilcosts),
+        'offer_provision': parseFloat(offer.data.offer_provision.replace(',','')),
+        'offer_utilcosts': parseFloat(offer.data.offer_utilcosts.replace(',','')),
         'city_name': offer.data.city_name,
         'city_plz': offer.data.city_plz,
         'offer_type': offer.data.offer_type,
-        'offer_bail': parseFloat(offer.data.offer_bail),
+        'offer_bail': parseFloat(offer.data.offer_bail.replace(',','')),
         'offer_startdate': offer.data.offer_startdate,
         'offer_enddate': offer.data.offer_enddate
       });

@@ -1,13 +1,11 @@
-<!--<ion-header>-->
-<!--<ion-navbar>-->
-<!--<ion-title>offers</ion-title>-->
-<!--</ion-navbar>-->
-<!--</ion-header>-->
 <ion-content padding>
   <button ion-button (click)="newOffer()">New</button>
   <div *ngFor="let offer of offers">
     <ion-card>
-      <img [src]="offer.media"/>
+      <img [src]="
+      offer.media ?
+      sanitizeUrl('http://' + restUrl + '/fa17g17/img/' + offer.media.split(',')[0]) : sanitizeUrl('http://' + restUrl + '/fa17g17/img/' + 'haus1.jpg')
+      "/>
       <ion-card-content>
         <ion-card-title>
           {{offer.angebot_titel}}

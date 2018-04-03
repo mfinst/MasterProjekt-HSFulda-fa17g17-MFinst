@@ -20,6 +20,10 @@
         {{offer.data.offer_title}}
       </ion-card-header>
       <ion-card-content>
+        <img [src]="
+            offer.data.immo_media ?
+            sanitizeUrl('http://' + restUrl + '/fa17g17/img/' + offer.data.immo_media.split(',')[0]) : sanitizeUrl('http://' + restUrl + '/fa17g17/img/' + 'haus1.jpg')
+            "/>
         {{offer.data.immo_desc}}
         <ion-list>
           <ion-item-divider>Specifications</ion-item-divider>
@@ -47,7 +51,6 @@
           <ion-item>End: {{offer.data.offer_enddate}}</ion-item>
         </ion-list>
       </ion-card-content>
-      <img [src]="offer.data.immo_media"/>
     </ion-card>
   </div>
 </ion-content>

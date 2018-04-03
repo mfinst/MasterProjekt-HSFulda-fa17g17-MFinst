@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ResthandlerProvider } from '../../providers/resthandler/resthandler';
+import { DomSanitizer } from '@angular/platform-browser';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the EstateDetailPage page.
@@ -17,8 +19,10 @@ import { ResthandlerProvider } from '../../providers/resthandler/resthandler';
 export class EstateDetailPage {
   offer = {data: {}};
   featureslist = [];
+  restUrl = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private resthandler: ResthandlerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private resthandler: ResthandlerProvider, private sanitizer: DomSanitizer, private authService: AuthServiceProvider) {
+    this.restUrl = this.authService.backendURL;
   }
 
   ionViewDidLoad() {
@@ -61,6 +65,10 @@ export class EstateDetailPage {
       const featureString = estate.data.immo_features;
       this.featureslist = featureString.split(',')
     })
+  }
+
+  sanitizeUrl(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }
