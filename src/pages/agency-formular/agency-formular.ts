@@ -48,6 +48,7 @@ export class AgencyFormularPage {
           message: 'You are an Agent now',
           duration: 2000
         })
+        toast.present();
       }
     )
   }
