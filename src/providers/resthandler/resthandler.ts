@@ -24,6 +24,9 @@ export class ResthandlerProvider {
   updateEstate(updatedEstate: any) {
     return this.http.post('http://' + this.authServive.backendURL + '/fa17g17/estatehandling/update', updatedEstate);
   }
+  deleteEstate(immoID) {
+    return this.http.post('http://' + this.authServive.backendURL + '/fa17g17/estatehandling/delete', {immoID: immoID, user: this.authServive.getUserInfo().id});
+  }
   getUserdata(userID) {
     return this.http.post('http://' + this.authServive.backendURL + '/fa17g17/user/profile', {id: userID});
   }

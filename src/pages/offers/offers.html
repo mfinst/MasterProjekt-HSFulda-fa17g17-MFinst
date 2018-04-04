@@ -17,7 +17,9 @@
         </p>
         <ion-buttons>
           <button ion-button (click)="editOffer(offer.immobilien_id)">Edit</button>
-          <button ion-button (click)="deactivateOffer(offer.id)">Delete</button>
+          <button ion-button (click)="deactivateOffer(offer.id)">
+            {{offer.besitzer_id !== authService.getUserInfo().id ? 'Decline': 'Delete'}}
+          </button>
         </ion-buttons>
       </ion-card-content>
     </ion-card>

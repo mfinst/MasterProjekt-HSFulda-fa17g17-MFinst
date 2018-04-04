@@ -41,8 +41,8 @@ export class OffersPage implements OnDestroy{
   newOffer() {
     this.navCtrl.push('OfferNewPage');
   }
-  deactivateOffer(offerId) {
-    // RestCall to deactivate
+  deactivateOffer(estate_id) {
+    this.resthandler.deleteEstate(estate_id).subscribe((data)=>{})
   }
   ngOnDestroy() {
     // this.navCtrl.push('OffersPage')
