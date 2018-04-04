@@ -1,6 +1,18 @@
 <ion-content padding>
   <ion-list>
     <form [formGroup]="offerForm" (ngSubmit)="commitEstate($event)">
+      <div *ngIf="authService.getUserInfo().role === 2">
+        <ion-item>
+          <ion-label stacked>Agent</ion-label>
+          <ion-select
+            type="string"
+            id="agent_id"
+            formControlName="agent_id"
+          >
+            <ion-option *ngFor="let agent of agents" [value]="agent.id">{{agent.lastname}} {{agent.agency}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
       <ion-item>
         <ion-label stacked>Address</ion-label>
         <ion-input

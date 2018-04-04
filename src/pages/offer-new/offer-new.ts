@@ -129,17 +129,37 @@ export class OfferNewPage {
       [
         Validators.required
       ])
+    ,
+    'agent_id': new FormControl(
+      null,
+      [
+        Validators.required
+      ])
   })
-
+  agents = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private resthandler: ResthandlerProvider, private authService: AuthServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OfferNewPage');
+    // console.log('ionViewDidLoad OfferNewPage');
+    if(this.authService.getUserInfo().role === 2 ) {
+      this.resthandler.getAllAgents().subscribe( (data: any) => {
+        if(data.response == 'true') {
+          this.agents = data.result;
+          console.log(data);
+          /*
+          agency: "CSURealEstate"
+          ​firstname: "Luka"
+          ​​​id: 1
+          ​​​lastname: "Eggers"
+           */
+        }
+      })
+    }
   }
 
   commitEstate() {
-    console.log('trying finish')
+    // console.log('trying finish')
     const estate = {
       "agentID": this.authService.getUserInfo().id,
       "ownerID": this.authService.getUserInfo().id,

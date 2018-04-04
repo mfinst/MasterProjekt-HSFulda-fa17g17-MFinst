@@ -74,6 +74,9 @@ export class ResthandlerProvider {
        "SingleFilter": singleFilter,
        "FilterDate": 'DSC' })
   }
+  getAllAgents() {
+    return this.http.post('http://' + this.authServive.backendURL + '/fa17g17/user/agents', {getAll: 'true'});
+  }
   // Nicht sicher ob das Überhaupt funktioniert
   deleteMessage() {}
 }
