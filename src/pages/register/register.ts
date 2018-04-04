@@ -36,19 +36,23 @@ export class RegisterPage {
 
   public register() {
     // call authService
-    this.authService.register(this.registerCredentials, (success)=> {
-      if(success === true) {
-        this.showPopup('Success', 'You can log-in now.')
-      } else {
-        this.showPopup('Error', 'Something went wrong, try again later.')
-      }
-    })
+    if(this.registerCredentials.passwordRepeat !== this.registerCredentials.password) {
+      this.showPopup('Error', 'Password incorrect repeated.')
+    } else {
+      this.authService.register(this.registerCredentials, (success)=> {
+        if(success === true) {
+          this.showPopup('Success', 'You can log-in now.')
+        } else {
+          this.showPopup('Error', 'Something went wrong, try again later.')
+        }
+      })
+    }
   }
 
   showPopup(title: string, text: string) {
     let alert = this.alertCtrl.create({
       title: title,
-      subTitle: title,
+      subTitle: text,
       buttons: [{
         text: 'OK',
         handler: data => {

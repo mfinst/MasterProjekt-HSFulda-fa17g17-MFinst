@@ -66,9 +66,9 @@ export class AuthServiceProvider {
   }
 
   public register(registerInfos, callback) {
-    this.http.post('http://' + this.backendURL + '/fa17g17/user/login', {
-      firstname: registerInfos.firstname,
-      lastname: registerInfos.lastname,
+    this.http.post('http://' + this.backendURL + '/fa17g17/user/registration', {
+      firstname: registerInfos.firstName,
+      lastname: registerInfos.lastName,
       email: registerInfos.email,
       password: registerInfos.password,
       passwordRepeat: registerInfos.passwordRepeat,
@@ -77,8 +77,8 @@ export class AuthServiceProvider {
       postalcode: registerInfos.postalcode,
       country: registerInfos.country}).subscribe(
       (response: any) => {
-        console.log(response);
-        callback(true);
+        // console.log(response);
+        callback(response.created === 'true'? true : false);
       },
       (error) => {
         callback(false);
