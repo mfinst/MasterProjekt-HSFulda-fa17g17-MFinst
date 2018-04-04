@@ -80,6 +80,9 @@ export class ResthandlerProvider {
   getAllAgents() {
     return this.http.post('http://' + this.authServive.backendURL + '/fa17g17/user/agents', {getAll: 'true'});
   }
+  changeUserRole(agency, agent_id) {
+    return this.http.post('http://' + this.authServive.backendURL + '/fa17g17/user/update/role', {id: this.authServive.getUserInfo().id, agency: agency, agentID: agent_id});
+  }
   // Nicht sicher ob das Überhaupt funktioniert
   deleteMessage() {}
 }

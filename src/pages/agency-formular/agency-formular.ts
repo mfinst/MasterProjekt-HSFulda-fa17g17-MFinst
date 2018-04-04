@@ -17,6 +17,7 @@ import { ResthandlerProvider } from '../../providers/resthandler/resthandler';
 })
 export class AgencyFormularPage {
   @ViewChild('agencyForm') agencyForm;
+  @ViewChild('roleForm') roleForm;
   useragency = {
     agency: '',
     agentID: ''
@@ -36,6 +37,19 @@ export class AgencyFormularPage {
       agency: this.authService.userInfo.agency,
       agentID: this.authService.userInfo.agentID
     }
+  }
+  submitRoleChange(event) {
+    console.log('change role: '+ this.roleForm.value.agency +' '+ this.roleForm.value.agentID)
+    this.restHandlerService.changeUserRole(
+      '' + this.roleForm.value.agency,
+      '' + this.roleForm.value.agentID).subscribe(
+      (response) => {
+        let toast = this.toastCtrl.create({
+          message: 'You are an Agent now',
+          duration: 2000
+        })
+      }
+    )
   }
   submit(event) {
     this.restHandlerService.updateUseragencystatus(

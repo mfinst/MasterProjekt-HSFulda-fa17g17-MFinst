@@ -14,29 +14,56 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="submit($event)" #agencyForm="ngForm">
-    <ion-item>
-      <ion-label stacked>Agency Name</ion-label>
-      <ion-input
-        type="string"
-        [ngModel]="useragency.agency"
-        ngModel
-        name="agency"
-        required
-        #agency="ngModel"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Agent Id</ion-label>
-      <ion-input
-        type="string"
-        [ngModel]="useragency.agentID"
-        ngModel
-        name="agentID"
-        required
-        #agentID="ngModel"
-      ></ion-input>
-    </ion-item>
-    <button ion-button type="submit" [disabled]="!agencyForm.valid">Submit Changes</button>
-  </form>
+  <div *ngIf="authService.getUserInfo().role === 2">
+    <form (ngSubmit)="submitRoleChange($event)" #roleForm="ngForm">
+      <ion-item>
+        <ion-label stacked>Agency Preference</ion-label>
+        <ion-select type="string" name="agency" ngModel #agency="ngModel" required>
+          <ion-option value="SFStateHomes">SFStateHomes</ion-option>
+          <ion-option value="SJStateRealtors">SJStateRealtors</ion-option>
+          <ion-option value="CSURealEstate">CSURealEstate</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Agent Id</ion-label>
+        <ion-input
+          type="string"
+          ngModel
+          name="agentID"
+          required
+          #agentID="ngModel"
+          placeholder="01-12345-67890"
+        ></ion-input>
+      </ion-item>
+      <button ion-button type="submit" [disabled]="!roleForm.valid">Submit Agent Status</button>
+    </form>
+  </div>
+
+  <div *ngIf="authService.getUserInfo().role !== 2">
+    <form (ngSubmit)="submit($event)" #agencyForm="ngForm">
+      <ion-item>
+        <ion-label stacked>Agency Name</ion-label>
+        <ion-input
+          type="string"
+          [ngModel]="useragency.agency"
+          ngModel
+          name="agency"
+          required
+          #agency="ngModel"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Agent Id</ion-label>
+        <ion-input
+          type="string"
+          [ngModel]="useragency.agentID"
+          ngModel
+          name="agentID"
+          required
+          #agentID="ngModel"
+        ></ion-input>
+      </ion-item>
+      <button ion-button type="submit" [disabled]="!agencyForm.valid">Submit Changes</button>
+    </form>
+  </div>
 </ion-content>
