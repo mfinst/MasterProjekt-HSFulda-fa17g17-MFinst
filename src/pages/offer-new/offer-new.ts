@@ -161,7 +161,7 @@ export class OfferNewPage {
   commitEstate() {
     // console.log('trying finish')
     const estate = {
-      "agentID": this.authService.getUserInfo().id,
+      "agentID": this.authService.getUserInfo().role === 2 ? this.offerForm.controls.agent_id.value : this.authService.getUserInfo().id,
       "ownerID": this.authService.getUserInfo().id,
       "request": 3,
       "title": this.offerForm.controls.offer_title.value,
@@ -196,12 +196,7 @@ export class OfferNewPage {
         console.log(error)
       },
       () => {
-      console.log('new offer comitted?')
+      // console.log('new offer comitted?')
       });
   }
-
-  manageFiles() {
-
-  }
-
 }
