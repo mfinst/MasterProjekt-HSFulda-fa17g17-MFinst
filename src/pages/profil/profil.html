@@ -1,18 +1,27 @@
-<!--
-  Generated template for the ProfilPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>profil-page</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>{{agent?.mail}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>Mail: {{agent?.mail}}</ion-item>
+    <ion-item>Firstname: {{agent?.firstname}}</ion-item>
+    <ion-item>Lastname: {{agent?.lastname}}</ion-item>
+    <ion-item>Agency: {{agent?.agency}}</ion-item>
+    <ion-item>Rating: {{agent?.rating}}</ion-item>
+    <ion-item>City: {{agent?.city}}</ion-item>
+    <ion-item>Postal: {{agent?.postalcode}}</ion-item>
+    <ion-item>street: {{agent?.street}}</ion-item>
+  </ion-list>
 
+  <ion-fab style="position: absolute; bottom: 25px; right: 25px;">
+    <button ion-fab (click)="writeMessage()">
+      <ion-icon name="mail"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

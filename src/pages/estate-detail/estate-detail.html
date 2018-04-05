@@ -29,6 +29,9 @@
           <ion-item-divider>Specifications</ion-item-divider>
           <p>{{offer.data.immo_type}} to {{offer.data.offer_type}}</p>
           <p>{{offer.data.agent_lastname}} by {{offer.data.agent_nick}}</p>
+          <ion-item>
+            <button ion-button (click)="toProfilPage(offer.data.agent_id)">To Agent Profile</button>
+          </ion-item>
           <p>Address: {{offer.data.immo_address}}</p>
           <p>{{offer.data.city_name}} {{offer.data.city_plz}}</p>
           <p>Size: {{offer.data.immo_qm}}qm</p>

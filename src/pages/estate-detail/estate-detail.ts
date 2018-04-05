@@ -71,4 +71,8 @@ export class EstateDetailPage {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
+  toProfilPage(agent_id) {
+    this.navCtrl.push('ProfilPage', {id: agent_id});
+  }
+
 }

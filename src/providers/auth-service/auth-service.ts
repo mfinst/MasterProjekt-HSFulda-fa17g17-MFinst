@@ -26,12 +26,11 @@ export class User {
 export class AuthServiceProvider {
   private currentUser: User;
   // local
-  public backendURL = 'localhost:17017';
+  // public backendURL = 'localhost:17017';
   // server
   // public Domain : mpfa17.de
-  // public backendURL = '79.143.180.221:80';
+  public backendURL = '79.143.180.221:80';
   public userInfo: any;
-  // admin@admin.de => cloud
   constructor(
     private http: HttpClient
   ) {}
@@ -67,8 +66,8 @@ export class AuthServiceProvider {
 
   public register(registerInfos, callback) {
     this.http.post('http://' + this.backendURL + '/fa17g17/user/registration', {
-      firstname: registerInfos.firstName,
-      lastname: registerInfos.lastName,
+      firstName: registerInfos.firstName,
+      lastName: registerInfos.lastName,
       email: registerInfos.email,
       password: registerInfos.password,
       passwordRepeat: registerInfos.passwordRepeat,
